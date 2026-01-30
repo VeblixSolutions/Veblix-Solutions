@@ -934,6 +934,15 @@
             flex: 1;
         }
 
+        /* Form Submit Button Container - CENTERED */
+        .form-submit-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 168, 232, 0.1);
+        }
+
         /* Footer */
         footer {
             background-color: #0a0a0a;
@@ -1241,6 +1250,12 @@
                 margin: 0 20px;
                 font-size: 0.85rem;
             }
+            
+            /* Form Submit Container */
+            .form-submit-container {
+                margin-top: 30px;
+                padding-top: 25px;
+            }
         }
 
         /* Mobile Landscape and Tablets (576px to 767px) */
@@ -1486,6 +1501,12 @@
                 grid-template-columns: 1fr;
             }
             
+            /* Form Submit Container */
+            .form-submit-container {
+                margin-top: 25px;
+                padding-top: 20px;
+            }
+            
             /* Footer */
             footer {
                 padding: 60px 0 30px;
@@ -1659,6 +1680,12 @@
                 max-width: none;
             }
             
+            /* Form Submit Container */
+            .form-submit-container {
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+            
             /* Services Marquee */
             .services-marquee {
                 padding: 10px 0;
@@ -1790,7 +1817,7 @@
     <!-- Hero Section with IMG tag -->
     <section class="hero" id="home">
         <!-- Replace "hero-bg.jpg" with your image path -->
-        <img src="hero1.png" alt="Hero Background" class="hero-bg">
+        <img src="hero-bg.jpg" alt="Hero Background" class="hero-bg">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <img src="logo.png" alt="Veblix Solutions Logo" class="hero-logo">
@@ -2019,7 +2046,6 @@
                 <h2>PRICE REQUEST</h2>
                 <div class="modal-buttons">
                     <button class="modal-btn back-btn" id="backHomeBtn">Back Home</button>
-                    <button class="modal-btn submit-btn-modal" id="submitQuoteBtn">Send Request</button>
                 </div>
             </div>
             
@@ -2105,17 +2131,24 @@
                         <label for="budget">Estimated Budget: *</label>
                         <select id="budget" name="budget" required>
                             <option value="">Select...</option>
-                            <option value="under-1k">Under $1,000</option>
-                            <option value="1k-5k">$1,000 - $5,000</option>
-                            <option value="5k-10k">$5,000 - $10,000</option>
-                            <option value="10k-25k">$10,000 - $25,000</option>
-                            <option value="25k-plus">$25,000+</option>
+                            <option value="under-1k">Under $100</option>
+                            <option value="1k-5k">$100 - $200</option>
+                            <option value="5k-10k">$200 - $300</option>
+                            <option value="10k-25k">$300 - $500</option>
+                            <option value="10k-25k">$500 - $700</option>
+                            <option value="10k-25k">$700 - $1000</option>
+                            <option value="25k-plus">Above $1000</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
                         <label for="projectDetails">Project Details: *</label>
                         <textarea id="projectDetails" name="projectDetails" rows="6" required placeholder="Provide a brief description of your project, goals, and any specific requirements..."></textarea>
+                    </div>
+
+                    <!-- CENTERED SUBMIT BUTTON -->
+                    <div class="form-submit-container">
+                        <button class="modal-btn submit-btn-modal" id="submitQuoteBtn">Send Request</button>
                     </div>
                 </form>
             </div>
@@ -2149,13 +2182,13 @@
                 <div class="footer-column">
                     <h4>FOLLOW US</h4>
                     <div class="social-icons">
-                        <a href="https://wa.me/923140835908" class="social-icon" target="_blank" aria-label="WhatsApp">
+                        <a href="#" class="social-icon">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="#" class="social-icon" target="_blank" aria-label="Instagram">
+                        <a href="#" class="social-icon">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/atif-hayat-khan-15538b3a8" class="social-icon"target="_blank" aria-label="LinkedIn">
+                        <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -2343,8 +2376,10 @@
             closeQuoteModal();
         });
         
-        // Event listener for submit button
-        submitQuoteBtn.addEventListener('click', () => {
+        // Event listener for submit button - FIXED to use the same button
+        submitQuoteBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            
             // Form validation
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
@@ -2396,6 +2431,12 @@
             // Reset form and close modal
             quoteForm.reset();
             closeQuoteModal();
+        });
+        
+        // Also add event listener for form submission
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            submitQuoteBtn.click(); // Trigger the button click
         });
         
         // Close modal when clicking outside of it
