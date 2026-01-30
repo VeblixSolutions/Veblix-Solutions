@@ -829,16 +829,32 @@
             transform: translateY(-2px);
         }
 
+        /* Submit button now uses hero-btn styling */
         .submit-btn-modal {
-            background: var(--primary-dark);
-            color: var(--text-light);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: var(--gradient-blue);
+            color: var(--primary-dark);
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
         }
 
         .submit-btn-modal:hover {
-            background: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 168, 232, 0.4);
+            border-color: var(--primary-dark);
         }
 
         .quote-form {
@@ -1256,6 +1272,12 @@
                 margin-top: 30px;
                 padding-top: 25px;
             }
+            
+            /* Submit Button */
+            .submit-btn-modal {
+                padding: 14px 35px;
+                min-width: 180px;
+            }
         }
 
         /* Mobile Landscape and Tablets (576px to 767px) */
@@ -1507,6 +1529,13 @@
                 padding-top: 20px;
             }
             
+            /* Submit Button */
+            .submit-btn-modal {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+                min-width: 180px;
+            }
+            
             /* Footer */
             footer {
                 padding: 60px 0 30px;
@@ -1686,6 +1715,13 @@
                 padding-top: 20px;
             }
             
+            /* Submit Button */
+            .submit-btn-modal {
+                padding: 10px 25px;
+                font-size: 0.85rem;
+                min-width: 160px;
+            }
+            
             /* Services Marquee */
             .services-marquee {
                 padding: 10px 0;
@@ -1752,6 +1788,12 @@
             
             .hero-logo {
                 height: 60px;
+            }
+            
+            .submit-btn-modal {
+                padding: 8px 20px;
+                font-size: 0.8rem;
+                min-width: 140px;
             }
         }
     </style>
@@ -1823,7 +1865,7 @@
             <img src="logo.png" alt="Veblix Solutions Logo" class="hero-logo">
             <p class="hero-subtitle">We Build What Moves The World Forward.</p>
             <a href="#" class="hero-btn" id="openQuoteBtnHero">
-                <i class="fas fa-rocket"></i> Get Your Quote
+                <i class="fas fa-rocket"></i> Request Pricing
             </a>
         </div>
     </section>
@@ -2148,7 +2190,9 @@
 
                     <!-- CENTERED SUBMIT BUTTON -->
                     <div class="form-submit-container">
-                        <button class="modal-btn submit-btn-modal" id="submitQuoteBtn">Send Request</button>
+                        <button class="submit-btn-modal" id="submitQuoteBtn">
+                            <i class="fas fa-paper-plane"></i> Send Request
+                        </button>
                     </div>
                 </form>
             </div>
